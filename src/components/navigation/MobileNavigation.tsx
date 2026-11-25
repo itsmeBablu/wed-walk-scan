@@ -95,7 +95,7 @@ export function MobileNavigation({
   );
 
   return (
-    <div className="px-4 lg:hidden">
+    <div className="bs-nav-shell lg:hidden">
       <nav
         ref={navBarRef}
         aria-label="Mobile"

@@ -29,10 +29,10 @@ export function DownloadsSection() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 -z-0 mx-auto h-[340px] max-w-4xl bg-[radial-gradient(60%_60%_at_50%_100%,rgba(250,204,21,0.14),transparent_70%)]"
+        className="pointer-events-none absolute inset-x-0 bottom-0 -z-0 mx-auto h-[340px] max-w-[min(92vw,1600px)] bg-[radial-gradient(60%_60%_at_50%_100%,rgba(250,204,21,0.14),transparent_70%)]"
       />
 
-      <div className="relative z-[1] mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="bs-container relative z-[1]">
         <div id="downloads-heading">
           <SectionHeading
             eyebrow={t.downloads.eyebrow}
@@ -45,7 +45,7 @@ export function DownloadsSection() {
           staggerSelector="[data-download-card]"
           stagger={0.1}
           y={26}
-          className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-7"
+          className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-7 2xl:gap-8"
         >
           {t.downloads.options.map((option) => {
             const Icon = PLATFORM_ICON_MAP[option.id];
@@ -81,7 +81,7 @@ export function DownloadsSection() {
                     <h3 className="mt-1.5 text-2xl font-semibold tracking-tight text-[var(--bs-text-primary)]">
                       {option.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-[var(--bs-text-muted)]">
+                    <p className="bs-prose mt-3 text-sm leading-relaxed text-[var(--bs-text-muted)]">
                       {option.subtitle}
                     </p>
 

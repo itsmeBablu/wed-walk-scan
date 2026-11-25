@@ -20,6 +20,7 @@ export function MainLayout({ children }: { children: ReactNode }) {
   const { t } = useLanguage();
   const { activeSection, isScrolled, isOverDark, selectSection } = useScrollSpy(SECTION_IDS);
   const headerRef = useRef<HTMLElement>(null);
+  const mainRef = useRef<HTMLElement>(null);
 
   useGSAP(
     () => {
@@ -43,7 +44,45 @@ export function MainLayout({ children }: { children: ReactNode }) {
     const id = window.requestAnimationFrame(() => {
       ScrollTrigger.refresh();
     });
-    return () => window.cancelAnimationFrame(id);
+
+    const mainEl = mainRef.current;
+    let timerId: number | undefined;
+    let lastWidth = window.innerWidth;
+    let lastHeight = mainEl?.scrollHeight ?? 0;
+
+    const scheduleRefresh = () => {
+      if (timerId !== undefined) {
+        window.clearTimeout(timerId);
+      }
+      timerId = window.setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 140);
+    };
+
+    const observer =
+      mainEl && typeof ResizeObserver !== 'undefined'
+        ? new ResizeObserver(() => {
+            const nextW = window.innerWidth;
+            const nextH = mainEl.scrollHeight;
+            if (Math.abs(nextW - lastWidth) > 2 || Math.abs(nextH - lastHeight) > 24) {
+              lastWidth = nextW;
+              lastHeight = nextH;
+              scheduleRefresh();
+            }
+          })
+        : null;
+
+    if (mainEl && observer) {
+      observer.observe(mainEl);
+    }
+
+    return () => {
+      window.cancelAnimationFrame(id);
+      if (timerId !== undefined) {
+        window.clearTimeout(timerId);
+      }
+      observer?.disconnect();
+    };
   }, []);
 
   return (
@@ -62,7 +101,7 @@ export function MainLayout({ children }: { children: ReactNode }) {
 
       <header
         ref={headerRef}
-        className="pointer-events-none fixed inset-x-0 top-0 z-40 pt-3 sm:pt-4"
+        className="pointer-events-none fixed inset-x-0 top-0 z-40 pt-[max(0.75rem,env(safe-area-inset-top))] sm:pt-[max(1rem,env(safe-area-inset-top))]"
       >
         <div className="pointer-events-auto">
           <MacNavigationBar
@@ -80,7 +119,9 @@ export function MainLayout({ children }: { children: ReactNode }) {
         </div>
       </header>
 
-      <main id="main-content">{children}</main>
+      <main ref={mainRef} id="main-content">
+        {children}
+      </main>
 
       <Footer />
     </div>

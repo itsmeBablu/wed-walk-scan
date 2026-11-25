@@ -1,5 +1,11 @@
 import { useEffect, useRef, type ReactNode } from 'react';
-import { gsap, ScrollTrigger, useGSAP } from '@/animations/gsapConfig';
+import {
+  computePinScrollDistance,
+  getPinnedStartOffset,
+  gsap,
+  ScrollTrigger,
+  useGSAP,
+} from '@/animations/gsapConfig';
 import { cn } from '@/utils/cn';
 
 interface ScrollPinnedShowcaseProps {
@@ -50,8 +56,8 @@ export function ScrollPinnedShowcase({
           const trigger = ScrollTrigger.create({
             trigger: root,
             pin: pinTarget,
-            start: 'top 88px',
-            end: () => `+=${Math.round((window.innerHeight * scrollSpanVh) / 100)}`,
+            start: () => `top ${getPinnedStartOffset()}px`,
+            end: () => `+=${computePinScrollDistance(pinTarget, scrollSpanVh / 100)}`,
             scrub: 0.4,
             anticipatePin: 1,
             invalidateOnRefresh: true,

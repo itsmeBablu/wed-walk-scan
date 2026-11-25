@@ -36,8 +36,8 @@ export function PDFReportShowcase() {
 
   return (
     <ScrollReveal y={26}>
-      <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10">
-        <div className="space-y-6 lg:col-span-5">
+      <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+        <div className="space-y-6 lg:col-span-5 xl:col-span-4">
           <div>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--bs-badge-bg)] px-3.5 py-1 text-xs font-semibold tracking-wider text-[var(--bs-badge-text)] uppercase ring-1 ring-[var(--bs-badge-border)]">
               <FileText className="h-3.5 w-3.5" aria-hidden="true" />
@@ -46,7 +46,7 @@ export function PDFReportShowcase() {
             <h3 className="mt-4 text-3xl font-semibold tracking-tight text-[var(--bs-text-primary)] sm:text-4xl">
               {pdf.headline}
             </h3>
-            <p className="mt-3 text-[15px] leading-relaxed text-[var(--bs-text-muted)]">
+            <p className="bs-prose mt-3 text-[15px] leading-relaxed text-[var(--bs-text-muted)]">
               {pdf.subtitle}
             </p>
           </div>
@@ -97,8 +97,8 @@ export function PDFReportShowcase() {
         </div>
 
         {/* Stacked PDF report document presentation */}
-        <div className="lg:col-span-7">
-          <div className="relative mx-auto max-w-md pt-6 pr-4 pb-4">
+        <div className="lg:col-span-7 xl:col-span-8">
+          <div className="relative mx-auto max-w-[min(100%,560px)] pt-6 pr-4 pb-4 2xl:max-w-[640px]">
             {/* Background stacked page layers */}
             <div
               aria-hidden="true"

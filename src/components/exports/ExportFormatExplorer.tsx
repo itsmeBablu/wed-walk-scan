@@ -5,6 +5,7 @@ import { GlassSegmentedControl, type SegmentedOption } from '@/components/ui/Gla
 import { EXPORT_EXPLORER_CATEGORIES } from '@/data/exportCatalog';
 import { useLanguage } from '@/hooks/useLanguage';
 import type { ExportExplorerCategory } from '@/types';
+import { cn } from '@/utils/cn';
 
 export function ExportFormatExplorer() {
   const { t } = useLanguage();
@@ -57,14 +58,14 @@ export function ExportFormatExplorer() {
 
   return (
     <div>
-      <div className="mx-auto max-w-3xl text-center">
+      <div className="mx-auto max-w-4xl text-center">
         <span className="inline-flex rounded-full bg-[var(--bs-badge-bg)] px-3.5 py-1 text-xs font-semibold tracking-wider text-[var(--bs-badge-text)] uppercase ring-1 ring-[var(--bs-badge-border)]">
           {t.deliverables.explorer.eyebrow}
         </span>
         <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--bs-text-primary)] sm:text-3xl">
           {t.deliverables.explorer.title}
         </h3>
-        <p className="mt-2.5 text-sm leading-relaxed text-[var(--bs-text-muted)] sm:text-base">
+        <p className="bs-prose mx-auto mt-2.5 text-sm leading-relaxed text-[var(--bs-text-muted)] sm:text-base">
           {t.deliverables.explorer.subtitle}
         </p>
       </div>
@@ -83,7 +84,19 @@ export function ExportFormatExplorer() {
         </div>
       </div>
 
-      <div ref={gridRef} className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <div
+        ref={gridRef}
+        className={cn(
+          'mt-8 grid gap-5 2xl:gap-6',
+          filteredFormats.length === 1
+            ? 'mx-auto max-w-xl grid-cols-1'
+            : filteredFormats.length === 2
+              ? 'mx-auto max-w-5xl grid-cols-1 md:grid-cols-2'
+              : filteredFormats.length === 3
+                ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+                : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5',
+        )}
+      >
         {filteredFormats.map((item) => (
           <ExportFormatCard key={item.id} item={item} />
         ))}

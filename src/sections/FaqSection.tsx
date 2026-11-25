@@ -12,12 +12,12 @@ export function FaqSection() {
       aria-labelledby="faq-heading"
       className="border-t border-[var(--bs-border-subtle)] bg-[var(--bs-bg-page)] py-20 sm:py-24"
     >
-      <div className="mx-auto max-w-4xl px-5 sm:px-8">
+      <div className="bs-container">
         <div id="faq-heading">
           <SectionHeading eyebrow={t.faq.eyebrow} title={t.faq.title} subtitle={t.faq.subtitle} />
         </div>
 
-        <ScrollReveal y={20} className="mt-12">
+        <ScrollReveal y={20} className="mx-auto mt-12 max-w-5xl">
           <Accordion items={t.faq.items} />
         </ScrollReveal>
       </div>

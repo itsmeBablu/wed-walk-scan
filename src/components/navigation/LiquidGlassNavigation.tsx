@@ -58,15 +58,18 @@ export function LiquidGlassNavigation({
         return;
       }
 
+      const isLaptopCompact = window.innerWidth < 1200;
+      const sidePad = isLaptopCompact ? (isScrolled ? 12 : 14) : isScrolled ? 16 : 20;
+
       const targetVars = {
         height: isScrolled ? 52 : 58,
-        maxWidth: isScrolled ? 1020 : 1140,
-        paddingLeft: isScrolled ? 14 : 18,
-        paddingRight: isScrolled ? 14 : 18,
+        width: isScrolled ? '97%' : '100%',
+        paddingLeft: sidePad,
+        paddingRight: sidePad,
         y: isScrolled ? -2 : 0,
       };
 
-      const logoScale = isScrolled ? 0.9 : 1;
+      const logoScale = isScrolled ? 0.92 : 1;
 
       if (isFirstCompactRender.current || prefersReducedMotion()) {
         isFirstCompactRender.current = false;
@@ -137,6 +140,15 @@ export function LiquidGlassNavigation({
       }
     });
 
+    const track = navTrackRef.current;
+    const resizeObserver =
+      track && typeof ResizeObserver !== 'undefined'
+        ? new ResizeObserver(() => slideActiveIndicator(false))
+        : null;
+    if (track && resizeObserver) {
+      resizeObserver.observe(track);
+    }
+
     const onResize = () => {
       if (window.innerWidth !== lastViewportWidth.current) {
         lastViewportWidth.current = window.innerWidth;
@@ -147,6 +159,7 @@ export function LiquidGlassNavigation({
     window.addEventListener('resize', onResize, { passive: true });
     return () => {
       active = false;
+      resizeObserver?.disconnect();
       window.removeEventListener('resize', onResize);
     };
   }, [slideActiveIndicator]);
@@ -202,24 +215,24 @@ export function LiquidGlassNavigation({
       aria-label="Primary"
       data-interactive="true"
       data-over-dark={isOverDark ? 'true' : undefined}
-      className="liquid-glass liquid-glass--nav mx-auto flex h-[58px] max-w-[1140px] items-center justify-between gap-4 rounded-full px-[18px] will-change-transform"
+      className="liquid-glass liquid-glass--nav mx-auto flex h-[58px] w-full items-center justify-between gap-1.5 rounded-full px-3.5 will-change-transform xl:grid xl:grid-cols-[1fr_auto_1fr] xl:gap-4 xl:px-5"
     >
       {/* Brand mark */}
       <a
         href="#top"
-        className="relative z-[3] flex shrink-0 items-center gap-2.5 rounded-full py-1 pr-2 pl-1 transition-opacity hover:opacity-85"
+        className="relative z-[3] flex shrink-0 items-center justify-self-start gap-2 rounded-full py-1 pr-1.5 pl-1 transition-opacity hover:opacity-85 xl:gap-2.5 xl:pr-2"
       >
         <div ref={logoWrapRef} className="inline-flex origin-left will-change-transform">
           <BrandLogo size={28} />
         </div>
-        <BrandWordmark className="text-[15px] font-semibold text-[var(--bs-text-primary)]" />
+        <BrandWordmark className="text-[14px] font-semibold text-[var(--bs-text-primary)] xl:text-[15px]" />
       </a>
 
       {/* Navigation links with GSAP hover + sliding Primary Yellow active pill */}
       <ul
         ref={navTrackRef}
         onPointerLeave={handleTrackLeave}
-        className="relative z-[3] hidden items-center gap-1 rounded-full bg-black/[0.03] p-1 lg:flex dark:bg-white/[0.04]"
+        className="relative z-[3] hidden items-center justify-self-center gap-0 rounded-full bg-black/[0.03] p-1 lg:flex xl:gap-1 dark:bg-white/[0.04]"
       >
         <span
           ref={hoverIndicatorRef}
@@ -250,8 +263,10 @@ export function LiquidGlassNavigation({
                 onClick={() => onSelectSection(item.id)}
                 onPointerEnter={() => handleItemEnter(item.id)}
                 className={cn(
-                  'inline-flex items-center rounded-full whitespace-nowrap transition-colors duration-200',
-                  isScrolled ? 'h-8 px-3 text-[12.5px]' : 'h-8 px-3.5 text-[13px]',
+                  'inline-flex h-8 items-center rounded-full whitespace-nowrap transition-colors duration-200',
+                  isScrolled
+                    ? 'px-2 text-[11.5px] xl:px-3 xl:text-[12.5px]'
+                    : 'px-2 text-[12px] xl:px-3.5 xl:text-[13px]',
                   isActive
                     ? 'font-semibold text-[var(--bs-accent-ink)]'
                     : 'font-medium text-[var(--bs-text-muted)] hover:text-[var(--bs-text-primary)]',
@@ -265,7 +280,7 @@ export function LiquidGlassNavigation({
       </ul>
 
       {/* Controls + Liquid Glass CTA */}
-      <div className="relative z-[3] flex shrink-0 items-center gap-2">
+      <div className="relative z-[3] flex shrink-0 items-center justify-self-end gap-1 xl:gap-2">
         <LanguageSwitcher size="sm" />
         <GlassThemeToggle compact size="sm" />
         <LiquidGlassButton

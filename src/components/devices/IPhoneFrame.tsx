@@ -13,7 +13,7 @@ interface IPhoneFrameProps {
  */
 export function IPhoneFrame({ label, children, className }: IPhoneFrameProps) {
   return (
-    <div className={cn('relative mx-auto w-full max-w-[290px] select-none', className)}>
+    <div className={cn('relative mx-auto w-full max-w-[400px] select-none', className)}>
       {/* Side hardware buttons (left: Action + Volume Up/Down) */}
       <span
         aria-hidden="true"

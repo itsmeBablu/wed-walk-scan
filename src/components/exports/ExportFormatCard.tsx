@@ -50,7 +50,9 @@ export function ExportFormatCard({ item }: ExportFormatCardProps) {
             {item.name}
           </h3>
 
-          <p className="mt-2 text-sm leading-relaxed text-[var(--bs-text-muted)]">{item.purpose}</p>
+          <p className="bs-prose mt-2 text-sm leading-relaxed text-[var(--bs-text-muted)]">
+            {item.purpose}
+          </p>
 
           <div className="mt-4 space-y-2 border-t border-[var(--bs-border-subtle)] pt-3.5 text-xs">
             <div>

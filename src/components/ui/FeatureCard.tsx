@@ -19,10 +19,27 @@ const ICON_MAP = {
 
 interface FeatureCardProps {
   item: FeatureItem;
+  index?: number;
   className?: string;
 }
 
-export function FeatureCard({ item, className }: FeatureCardProps) {
+function getBentoSpanClasses(item: FeatureItem, index?: number): string {
+  if (item.span === 'wide') {
+    return 'md:col-span-2';
+  }
+  if (index === 3) {
+    return 'md:col-span-1 lg:col-span-2 xl:col-span-1';
+  }
+  if (index === 6) {
+    return 'xl:col-span-2 3xl:col-span-1';
+  }
+  if (index === 7) {
+    return 'md:col-span-2 xl:col-span-2 3xl:col-span-1';
+  }
+  return '';
+}
+
+export function FeatureCard({ item, index, className }: FeatureCardProps) {
   const Icon = ICON_MAP[item.icon];
   const cardRef = useRef<HTMLElement>(null);
   const reducedMotion = usePrefersReducedMotion();
@@ -51,8 +68,8 @@ export function FeatureCard({ item, className }: FeatureCardProps) {
       ref={cardRef}
       data-bento-card
       className={cn(
-        'surface-card flex flex-col justify-between rounded-[var(--bs-radius-lg)] p-6 transition-shadow duration-300 will-change-transform hover:shadow-[0_18px_42px_-16px_rgba(0,113,227,0.18)] sm:p-7',
-        item.span === 'wide' && 'md:col-span-2',
+        'surface-card flex flex-col justify-between rounded-[var(--bs-radius-lg)] p-6 transition-shadow duration-300 will-change-transform hover:shadow-[0_18px_42px_-16px_rgba(250,204,21,0.2)] sm:p-7',
+        getBentoSpanClasses(item, index),
         className,
       )}
     >
@@ -76,7 +93,7 @@ export function FeatureCard({ item, className }: FeatureCardProps) {
         <h3 className="mt-5 text-xl font-semibold tracking-tight text-[var(--bs-text-primary)]">
           {item.title}
         </h3>
-        <p className="mt-2.5 text-[15px] leading-relaxed text-[var(--bs-text-muted)]">
+        <p className="bs-prose mt-2.5 text-[15px] leading-relaxed text-[var(--bs-text-muted)]">
           {item.description}
         </p>
       </div>

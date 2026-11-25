@@ -12,20 +12,20 @@ export function NotesShowcase() {
 
   return (
     <ScrollReveal y={26} className="mt-16">
-      <div className="mx-auto max-w-3xl text-center">
+      <div className="mx-auto max-w-4xl text-center">
         <span className="inline-flex rounded-full bg-[var(--bs-badge-bg)] px-3.5 py-1 text-xs font-semibold tracking-wider text-[var(--bs-badge-text)] uppercase ring-1 ring-[var(--bs-badge-border)]">
           {notes.eyebrow}
         </span>
         <h3 className="mt-4 text-3xl font-semibold tracking-tight text-[var(--bs-text-primary)] sm:text-4xl">
           {notes.headline}
         </h3>
-        <p className="mt-3 text-base leading-relaxed text-[var(--bs-text-muted)]">
+        <p className="bs-prose mx-auto mt-3 text-base leading-relaxed text-[var(--bs-text-muted)]">
           {notes.subtitle}
         </p>
       </div>
 
       {/* Three verified iOS-style note & pin cards */}
-      <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">
+      <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-6">
         {notes.cards.map((card, idx) => {
           const Icon = CARD_ICONS[idx] ?? FileText;
           return (

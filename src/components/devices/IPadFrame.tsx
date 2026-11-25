@@ -13,7 +13,7 @@ interface IPadFrameProps {
  */
 export function IPadFrame({ label, children, className }: IPadFrameProps) {
   return (
-    <div className={cn('relative mx-auto w-full max-w-[520px] select-none', className)}>
+    <div className={cn('relative mx-auto w-full max-w-[760px] select-none', className)}>
       {/* Side top/power & volume micro buttons */}
       <span
         aria-hidden="true"

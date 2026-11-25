@@ -73,7 +73,7 @@ export function EcosystemSection() {
       aria-labelledby="ecosystem-heading"
       className="border-t border-[var(--bs-border-subtle)] bg-[var(--bs-surface)] py-20 sm:py-28"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="bs-container">
         <div id="ecosystem-heading">
           <SectionHeading eyebrow={eco.eyebrow} title={eco.headline} subtitle={eco.subtitle} />
         </div>
@@ -94,9 +94,9 @@ export function EcosystemSection() {
         {/* Synchronized device preview stage */}
         <div
           ref={stageRef}
-          className="mt-10 grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10"
+          className="mt-10 grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-14"
         >
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 xl:col-span-4">
             <LiquidGlassCard variant="elevated" elevateOnHover={false} rounded="xl">
               <span className="inline-flex rounded-full bg-[var(--bs-badge-bg)] px-3 py-1 text-xs font-semibold text-[var(--bs-badge-text)] ring-1 ring-[var(--bs-badge-border)]">
                 {selected.deviceTag}
@@ -106,7 +106,7 @@ export function EcosystemSection() {
                 {selected.roleTitle}
               </h3>
 
-              <p className="mt-3 text-[15px] leading-relaxed text-[var(--bs-text-muted)]">
+              <p className="bs-prose mt-3 text-[15px] leading-relaxed text-[var(--bs-text-muted)]">
                 {selected.summary}
               </p>
 
@@ -131,23 +131,31 @@ export function EcosystemSection() {
                     className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[var(--bs-accent-text)]"
                     aria-hidden="true"
                   />
-                  <p>{selected.note}</p>
+                  <p className="bs-prose">{selected.note}</p>
                 </div>
               )}
             </LiquidGlassCard>
           </div>
 
-          <div className="lg:col-span-7">
-            <LiquidGlassPanel variant="subtle" refraction rounded="xl" className="p-6 sm:p-8">
+          <div className="lg:col-span-7 xl:col-span-8">
+            <LiquidGlassPanel
+              variant="subtle"
+              refraction
+              rounded="xl"
+              className="p-6 sm:p-8 xl:p-10"
+            >
               {selected.id === 'iphone' ? (
                 <div className="py-2">
-                  <IPhoneFrame className="max-w-[270px]" label={t.hero.iphoneLabel}>
+                  <IPhoneFrame
+                    className="max-w-[300px] xl:max-w-[340px]"
+                    label={t.hero.iphoneLabel}
+                  >
                     <ScreenshotPlaceholder screenshotId={selected.screenshotId} />
                   </IPhoneFrame>
                 </div>
               ) : selected.id === 'ipad' ? (
                 <div className="py-2">
-                  <IPadFrame label={t.hero.ipadLabel}>
+                  <IPadFrame className="max-w-[760px]" label={t.hero.ipadLabel}>
                     <ScreenshotPlaceholder screenshotId={selected.screenshotId} />
                   </IPadFrame>
                 </div>
@@ -165,7 +173,7 @@ export function EcosystemSection() {
           staggerSelector="[data-eco-card]"
           stagger={0.08}
           y={22}
-          className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3"
+          className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3 lg:gap-7"
         >
           {eco.platforms.map((platform) => {
             const Icon = PLATFORM_ICONS[platform.id];

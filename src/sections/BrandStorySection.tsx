@@ -2,6 +2,8 @@ import { Clock, Layers3, Maximize2, MoveHorizontal, Wallet } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react';
 import {
   APPLE_EASE,
+  computePinScrollDistance,
+  getPinnedStartOffset,
   gsap,
   ScrollTrigger,
   prefersReducedMotion,
@@ -52,8 +54,8 @@ export function BrandStorySection() {
           const trigger = ScrollTrigger.create({
             trigger: container,
             pin: container,
-            start: 'top 92px',
-            end: () => `+=${Math.round(window.innerHeight * 1.9)}`,
+            start: () => `top ${getPinnedStartOffset()}px`,
+            end: () => `+=${computePinScrollDistance(container, 1.85)}`,
             scrub: 0.4,
             anticipatePin: 1,
             invalidateOnRefresh: true,
@@ -123,7 +125,7 @@ export function BrandStorySection() {
       aria-labelledby="brand-story-heading"
       className="border-t border-[var(--bs-border-subtle)] bg-[var(--bs-bg-page)] py-20 sm:py-28"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="bs-container">
         {/* Part 1: Brand Meaning — More than a scan. A new dimension. */}
         <div id="brand-story-heading">
           <SectionHeading
@@ -137,7 +139,7 @@ export function BrandStorySection() {
           staggerSelector="[data-pillar-card]"
           stagger={0.08}
           y={24}
-          className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 2xl:gap-7"
         >
           {t.brandStory.pillars.map((pillar, idx) => (
             <div key={pillar.id} data-pillar-card className="h-full">
@@ -172,7 +174,7 @@ export function BrandStorySection() {
                     — {pillar.label}
                   </h3>
 
-                  <p className="mt-2 text-sm leading-relaxed text-[var(--bs-text-muted)]">
+                  <p className="bs-prose mt-2 text-sm leading-relaxed text-[var(--bs-text-muted)]">
                     {pillar.description}
                   </p>
                 </div>
@@ -191,10 +193,10 @@ export function BrandStorySection() {
 
           <div
             ref={showcaseRef}
-            className="mt-14 grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10"
+            className="mt-14 grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-14"
           >
             {/* Left selector list: 1D to 5D */}
-            <div className="space-y-2.5 lg:col-span-5">
+            <div className="space-y-2.5 lg:col-span-5 xl:col-span-4">
               {dimensions.map((dim, idx) => {
                 const Icon = DIMENSION_ICONS[dim.id];
                 const isActive = idx === activeIndex;
@@ -267,7 +269,7 @@ export function BrandStorySection() {
             </div>
 
             {/* Right dimensional visual progression */}
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-7 xl:col-span-8">
               <LiquidGlassPanel variant="elevated" refraction rounded="xl" className="p-6 sm:p-8">
                 <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-2.5">

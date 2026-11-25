@@ -11,14 +11,14 @@ export function Footer() {
 
   return (
     <footer className="border-t border-[var(--bs-border-subtle)] bg-[var(--bs-surface)]">
-      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-16">
+      <div className="bs-container py-14 sm:py-16">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
           <div className="md:col-span-5">
             <a href="#top" className="inline-flex items-center gap-2.5">
               <BrandLogo size={32} />
               <BrandWordmark className="text-lg font-semibold text-[var(--bs-text-primary)]" />
             </a>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-[var(--bs-text-muted)]">
+            <p className="bs-prose mt-4 text-sm leading-relaxed text-[var(--bs-text-muted)]">
               {t.footer.tagline}
             </p>
             <p className="mt-4 inline-flex items-center rounded-full border border-[var(--bs-border-subtle)] bg-[var(--bs-surface-subtle)] px-3 py-1 text-xs font-medium text-[var(--bs-text-muted)]">

@@ -17,4 +17,38 @@ export function prefersReducedMotion(): boolean {
   );
 }
 
+/**
+ * Computes responsive header clearance for ScrollTrigger `pin` triggers
+ * based on the live floating navigation bar bounds.
+ */
+export function getPinnedStartOffset(): number {
+  if (typeof document === 'undefined') {
+    return 88;
+  }
+  const header = document.querySelector<HTMLElement>('header');
+  if (!header) {
+    return 88;
+  }
+  const rect = header.getBoundingClientRect();
+  return Math.max(76, Math.round(rect.bottom + 14));
+}
+
+/**
+ * Computes responsive pin scroll travel distance from actual pinned element
+ * dimensions and viewport height.
+ */
+export function computePinScrollDistance(
+  element: HTMLElement | null,
+  spanRatio = 1.85,
+  elementMultiplier = 1.6,
+): number {
+  if (typeof window === 'undefined') {
+    return 1200;
+  }
+  const vhDistance = Math.round(window.innerHeight * spanRatio);
+  const elHeight = element?.offsetHeight ?? 0;
+  const elDistance = elHeight > 0 ? Math.round(elHeight * elementMultiplier) : 0;
+  return Math.max(vhDistance, elDistance);
+}
+
 export { gsap, ScrollTrigger, useGSAP };

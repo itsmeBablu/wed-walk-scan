@@ -12,8 +12,8 @@ export function BIMWorkflow() {
   return (
     <ScrollReveal y={26}>
       <LiquidGlassPanel variant="elevated" refraction rounded="xl" className="p-6 sm:p-10">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-7">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+          <div className="lg:col-span-7 xl:col-span-6">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--bs-badge-bg)] px-3.5 py-1 text-xs font-semibold tracking-wider text-[var(--bs-badge-text)] uppercase ring-1 ring-[var(--bs-badge-border)]">
               <Workflow className="h-3.5 w-3.5" aria-hidden="true" />
               {bim.eyebrow}
@@ -23,11 +23,11 @@ export function BIMWorkflow() {
               {bim.headline}
             </h3>
 
-            <p className="mt-3 text-[15px] leading-relaxed text-[var(--bs-text-muted)]">
+            <p className="bs-prose mt-3 text-[15px] leading-relaxed text-[var(--bs-text-muted)]">
               {bim.subtitle}
             </p>
 
-            <ul className="mt-6 space-y-2.5">
+            <ul className="bs-prose mt-6 space-y-2.5">
               {bim.capabilities.map((cap) => (
                 <li
                   key={cap}
@@ -43,7 +43,7 @@ export function BIMWorkflow() {
             </ul>
           </div>
 
-          <div className="flex flex-col justify-between gap-6 lg:col-span-5">
+          <div className="flex flex-col justify-between gap-6 lg:col-span-5 xl:col-span-6">
             <LiquidGlassCard variant="subtle" elevateOnHover={false} rounded="lg">
               <p className="text-xs font-semibold tracking-wider text-[var(--bs-text-muted)] uppercase">
                 {bim.toolsLabel}

@@ -13,7 +13,7 @@ export function SurveyEvidenceSection() {
       aria-labelledby="survey-evidence-heading"
       className="border-t border-[var(--bs-border-subtle)] bg-[var(--bs-surface)] py-20 sm:py-28"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="bs-container">
         <div id="survey-evidence-heading">
           <SectionHeading eyebrow={sp.eyebrow} title={sp.headline} subtitle={sp.subtitle} />
         </div>

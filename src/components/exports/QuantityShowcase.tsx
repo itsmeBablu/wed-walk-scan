@@ -47,7 +47,7 @@ export function QuantityShowcase() {
         elevateOnHover={false}
         className="p-6 sm:p-10"
       >
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-14">
           <div className="lg:col-span-6">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--bs-badge-bg)] px-3.5 py-1 text-xs font-semibold tracking-wider text-[var(--bs-badge-text)] uppercase ring-1 ring-[var(--bs-badge-border)]">
               <Calculator className="h-3.5 w-3.5" aria-hidden="true" />
@@ -58,11 +58,11 @@ export function QuantityShowcase() {
               {q.headline}
             </h3>
 
-            <p className="mt-3 text-[15px] leading-relaxed text-[var(--bs-text-muted)]">
+            <p className="bs-prose mt-3 text-[15px] leading-relaxed text-[var(--bs-text-muted)]">
               {q.subtitle}
             </p>
 
-            <ul className="mt-6 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1">
+            <ul className="bs-prose mt-6 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1">
               {q.metrics.map((metric) => (
                 <li
                   key={metric}

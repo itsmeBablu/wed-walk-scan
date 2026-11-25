@@ -89,7 +89,7 @@ function AccordionRow({ item, isOpen, onToggle }: AccordionRowProps) {
         aria-hidden={!isOpen}
         className="overflow-hidden"
       >
-        <p className="pb-5 text-[15px] leading-relaxed text-[var(--bs-text-muted)]">
+        <p className="bs-prose pb-5 text-[15px] leading-relaxed text-[var(--bs-text-muted)]">
           {item.answer}
         </p>
       </div>

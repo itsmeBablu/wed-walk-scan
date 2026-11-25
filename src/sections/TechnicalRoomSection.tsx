@@ -51,7 +51,7 @@ export function TechnicalRoomSection() {
       aria-labelledby="technical-room-heading"
       className="border-t border-[var(--bs-border-subtle)] bg-[var(--bs-surface)] py-20 sm:py-28"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="bs-container">
         <div id="technical-room-heading">
           <SectionHeading
             eyebrow={t.technicalRoom.eyebrow}
@@ -71,9 +71,9 @@ export function TechnicalRoomSection() {
 
         <div
           ref={frameRef}
-          className="mt-10 grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10"
+          className="mt-10 grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-14"
         >
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 xl:col-span-4">
             <LiquidGlassCard variant="elevated" elevateOnHover={false}>
               <span className="inline-flex rounded-full bg-[var(--bs-badge-bg)] px-3 py-1 text-xs font-semibold text-[var(--bs-badge-text)] ring-1 ring-[var(--bs-badge-border)]">
                 {activeTab.label}
@@ -83,7 +83,7 @@ export function TechnicalRoomSection() {
                 {activeTab.title}
               </h3>
 
-              <p className="mt-3 text-[15px] leading-relaxed text-[var(--bs-text-muted)]">
+              <p className="bs-prose mt-3 text-[15px] leading-relaxed text-[var(--bs-text-muted)]">
                 {activeTab.description}
               </p>
 
@@ -105,7 +105,7 @@ export function TechnicalRoomSection() {
             </LiquidGlassCard>
           </div>
 
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 xl:col-span-8">
             <ParallaxImage
               yOffset={18}
               className="rounded-[var(--bs-radius-lg)] border border-[var(--bs-border-strong)] bg-[var(--bs-bg-page)] shadow-[0_24px_60px_-24px_rgba(0,0,0,0.2)]"

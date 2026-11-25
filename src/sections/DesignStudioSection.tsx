@@ -2,6 +2,8 @@ import { CheckCircle2 } from 'lucide-react';
 import { useRef, useState } from 'react';
 import {
   APPLE_EASE,
+  computePinScrollDistance,
+  getPinnedStartOffset,
   gsap,
   ScrollTrigger,
   prefersReducedMotion,
@@ -59,8 +61,8 @@ export function DesignStudioSection() {
           const pinTrigger = ScrollTrigger.create({
             trigger: stage,
             pin: stage,
-            start: 'top 92px',
-            end: () => `+=${Math.round(window.innerHeight * 1.65)}`,
+            start: () => `top ${getPinnedStartOffset()}px`,
+            end: () => `+=${computePinScrollDistance(stage, 1.65)}`,
             scrub: 0.4,
             anticipatePin: 1,
             invalidateOnRefresh: true,
@@ -120,10 +122,10 @@ export function DesignStudioSection() {
       {/* Subtle studio ambient light */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-12 mx-auto h-[460px] max-w-5xl bg-[radial-gradient(60%_55%_at_50%_35%,rgba(250,204,21,0.16),transparent_72%)]"
+        className="pointer-events-none absolute inset-x-0 top-12 mx-auto h-[460px] max-w-[min(92vw,1600px)] bg-[radial-gradient(60%_55%_at_50%_35%,rgba(250,204,21,0.16),transparent_72%)]"
       />
 
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="bs-container">
         <div id="design-studio-heading">
           <SectionHeading
             inverted
@@ -135,7 +137,7 @@ export function DesignStudioSection() {
 
         <div
           ref={stageRef}
-          className="mt-14 grid grid-cols-1 items-center gap-8 lg:mt-16 lg:grid-cols-12 lg:gap-10"
+          className="mt-14 grid grid-cols-1 items-center gap-8 lg:mt-16 lg:grid-cols-12 lg:gap-10 xl:gap-14"
         >
           {/* Focused Mac Design Studio Window */}
           <div ref={windowRef} className="lg:col-span-8 will-change-transform">

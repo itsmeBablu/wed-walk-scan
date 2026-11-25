@@ -72,14 +72,59 @@
   --bs-grid-line: rgba(180, 130, 0, 0.08);
   --bs-grid-line-strong: rgba(180, 130, 0, 0.16);
 
-  /* Radii & Layout */
+  /* Radii & Fluid Layout Tokens */
   --bs-radius-sm: 12px;
   --bs-radius-md: 18px;
   --bs-radius-lg: 26px;
   --bs-radius-xl: 34px;
   --bs-radius-pill: 9999px;
 
-  --bs-nav-offset: 88px;
+  --bs-nav-offset: 92px;
+  --bs-container-max: 100%;
+  --bs-prose-max: 68ch;
+  /* Mobile (320px+): 16-20px fluid horizontal gutters */
+  --bs-container-px: clamp(16px, calc(12.2px + 1.15vw), 24px);
+  --bs-nav-px: clamp(12px, calc(8px + 1.25vw), 24px);
+}
+
+/* Tablet (768px-1023px): 24-32px */
+@media (min-width: 768px) {
+  :root {
+    --bs-container-px: clamp(24px, calc(-8px + 4.17vw), 40px);
+    --bs-nav-px: clamp(20px, 2.8vw, 32px);
+  }
+}
+
+/* Laptop (1024px-1279px): 40-48px */
+@media (min-width: 1024px) {
+  :root {
+    --bs-container-px: clamp(40px, 3.5vw, 48px);
+    --bs-nav-px: clamp(24px, 2.4vw, 36px);
+  }
+}
+
+/* Desktop (1280px-1919px): 48-64px */
+@media (min-width: 1280px) {
+  :root {
+    --bs-container-px: clamp(48px, 3.8vw, 64px);
+    --bs-nav-px: clamp(28px, 2.4vw, 48px);
+  }
+}
+
+/* Large Desktop (1920px-2559px): 64-80px */
+@media (min-width: 1920px) {
+  :root {
+    --bs-container-px: clamp(64px, 3.2vw, 80px);
+    --bs-nav-px: clamp(44px, 2.2vw, 64px);
+  }
+}
+
+/* Ultrawide (2560px-3840px+): 80-120px */
+@media (min-width: 2560px) {
+  :root {
+    --bs-container-px: clamp(80px, 3.125vw, 120px);
+    --bs-nav-px: clamp(56px, 2.3vw, 96px);
+  }
 }
 
 [data-theme='dark'] {

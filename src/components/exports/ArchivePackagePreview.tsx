@@ -36,8 +36,8 @@ export function ArchivePackagePreview() {
 
   return (
     <ScrollReveal y={26}>
-      <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-10">
-        <div className="space-y-6 lg:col-span-5">
+      <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+        <div className="space-y-6 lg:col-span-5 xl:col-span-4">
           <GlassSegmentedControl
             options={tabOptions}
             value={mode}
@@ -78,7 +78,7 @@ export function ArchivePackagePreview() {
           </div>
         </div>
 
-        <div className="lg:col-span-7">
+        <div className="lg:col-span-7 xl:col-span-8">
           <AnimatedFileExplorer nodes={activeTree} windowTitle={activeTitle} badge="ZIP Archive" />
         </div>
       </div>

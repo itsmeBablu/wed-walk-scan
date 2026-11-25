@@ -15,7 +15,7 @@ export function MacNavigationBar({
   onSelectSection,
 }: MacNavigationBarProps) {
   return (
-    <div className="hidden px-5 lg:block">
+    <div className="bs-nav-shell hidden lg:block">
       <LiquidGlassNavigation
         activeSection={activeSection}
         isScrolled={isScrolled}

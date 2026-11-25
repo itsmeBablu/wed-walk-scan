@@ -28,17 +28,21 @@ export function ParallaxImage({ children, yOffset = 24, className }: ParallaxIma
       mm.add(
         '(min-width: 1024px) and (hover: hover) and (prefers-reduced-motion: no-preference)',
         () => {
+          const resolveOffset = () =>
+            Math.min(yOffset, Math.max(12, Math.round(container.offsetHeight * 0.055)));
+
           gsap.fromTo(
             inner,
-            { y: -yOffset },
+            { y: () => -resolveOffset() },
             {
-              y: yOffset,
+              y: () => resolveOffset(),
               ease: 'none',
               scrollTrigger: {
                 trigger: container,
                 start: 'top bottom',
                 end: 'bottom top',
                 scrub: 0.6,
+                invalidateOnRefresh: true,
               },
             },
           );

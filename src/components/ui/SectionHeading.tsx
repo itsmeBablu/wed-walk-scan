@@ -22,7 +22,13 @@ export function SectionHeading({
   const centered = align === 'center';
 
   return (
-    <div className={cn('max-w-3xl', centered ? 'mx-auto text-center' : 'text-left', className)}>
+    <div
+      className={cn(
+        'max-w-4xl 2xl:max-w-5xl',
+        centered ? 'mx-auto text-center' : 'text-left',
+        className,
+      )}
+    >
       <ScrollReveal y={14} duration={0.6}>
         <span
           className={cn(
@@ -40,7 +46,7 @@ export function SectionHeading({
         as="h2"
         text={title}
         className={cn(
-          'mt-4 text-3xl font-semibold tracking-[-0.028em] text-balance sm:text-4xl lg:text-[46px] lg:leading-[1.08]',
+          'mt-4 text-[clamp(1.85rem,3vw,3.35rem)] leading-[1.08] font-semibold tracking-[-0.028em] text-balance',
           inverted ? 'text-[#F5F5F7]' : 'text-[var(--bs-text-primary)]',
         )}
       />
@@ -49,7 +55,8 @@ export function SectionHeading({
         <ScrollReveal y={18} delay={0.08} duration={0.7}>
           <p
             className={cn(
-              'mt-4 text-base leading-relaxed text-pretty sm:text-lg',
+              'bs-prose mt-4 text-base leading-relaxed text-pretty sm:text-lg',
+              centered && 'mx-auto',
               inverted ? 'text-[#A1A1A6]' : 'text-[var(--bs-text-muted)]',
             )}
           >

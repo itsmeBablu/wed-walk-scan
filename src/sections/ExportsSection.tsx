@@ -57,7 +57,7 @@ export function ExportsSection() {
       aria-labelledby="exports-heading"
       className="border-t border-[var(--bs-border-subtle)] bg-[var(--bs-bg-page)] py-20 sm:py-28"
     >
-      <div className="mx-auto max-w-6xl space-y-24 px-5 sm:px-8 sm:space-y-32">
+      <div className="bs-container space-y-24 sm:space-y-32">
         {/* 28. Comprehensive Export Showcase + 39. Interactive Explorer */}
         <div>
           <div id="exports-heading">
@@ -75,8 +75,8 @@ export function ExportsSection() {
 
         {/* 29. Floor Plans & Architectural Drawings */}
         <ScrollReveal y={26}>
-          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10">
-            <div className="space-y-6 lg:col-span-5">
+          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+            <div className="space-y-6 lg:col-span-5 xl:col-span-4">
               <div>
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--bs-badge-bg)] px-3.5 py-1 text-xs font-semibold tracking-wider text-[var(--bs-badge-text)] uppercase ring-1 ring-[var(--bs-badge-border)]">
                   <Ruler className="h-3.5 w-3.5" aria-hidden="true" />
@@ -85,7 +85,7 @@ export function ExportsSection() {
                 <h3 className="mt-4 text-3xl font-semibold tracking-tight text-[var(--bs-text-primary)] sm:text-4xl">
                   {d.floorPlans.headline}
                 </h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-[var(--bs-text-muted)]">
+                <p className="bs-prose mt-3 text-[15px] leading-relaxed text-[var(--bs-text-muted)]">
                   {d.floorPlans.subtitle}
                 </p>
               </div>
@@ -106,7 +106,7 @@ export function ExportsSection() {
                 ))}
               </div>
 
-              <ul className="space-y-2 text-sm text-[var(--bs-text-primary)]">
+              <ul className="bs-prose space-y-2 text-sm text-[var(--bs-text-primary)]">
                 {d.floorPlans.capabilities.map((cap) => (
                   <li key={cap} className="flex items-start gap-2.5">
                     <Check
@@ -119,7 +119,7 @@ export function ExportsSection() {
               </ul>
             </div>
 
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-7 xl:col-span-8">
               <div className="overflow-hidden rounded-[var(--bs-radius-lg)] border border-[var(--bs-border-strong)] bg-[var(--bs-surface)] shadow-xl">
                 <ScreenshotPlaceholder screenshotId="export-floorplan-multi" />
               </div>
@@ -129,14 +129,14 @@ export function ExportsSection() {
 
         {/* 30. 3D Models & Mesh Exports */}
         <div>
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="mx-auto max-w-4xl text-center">
             <span className="inline-flex rounded-full bg-[var(--bs-badge-bg)] px-3.5 py-1 text-xs font-semibold tracking-wider text-[var(--bs-badge-text)] uppercase ring-1 ring-[var(--bs-badge-border)]">
               {d.models3d.eyebrow}
             </span>
             <h3 className="mt-4 text-3xl font-semibold tracking-tight text-[var(--bs-text-primary)] sm:text-4xl">
               {d.models3d.headline}
             </h3>
-            <p className="mt-3 text-base leading-relaxed text-[var(--bs-text-muted)]">
+            <p className="bs-prose mx-auto mt-3 text-base leading-relaxed text-[var(--bs-text-muted)]">
               {d.models3d.subtitle}
             </p>
           </div>
@@ -144,14 +144,14 @@ export function ExportsSection() {
           <div
             ref={modelStageRef}
             style={{ perspective: 1200 }}
-            className="mt-10 will-change-transform"
+            className="mx-auto mt-10 max-w-[min(100%,1720px)] will-change-transform"
           >
             <MacWindow darkChrome title="dWalkScan 3D Model Export" badge="USDZ · OBJ · STL · PLY">
               <ScreenshotPlaceholder darkSurface screenshotId="export-3d-mesh" />
             </MacWindow>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 2xl:gap-6">
             {d.models3d.formats.map((fmt) => (
               <LiquidGlassCard key={fmt.ext} variant="elevated" rounded="md" className="p-5">
                 <span className="rounded-full bg-[var(--bs-accent)] px-2.5 py-0.5 font-mono text-xs font-bold text-[var(--bs-accent-ink)]">
@@ -160,7 +160,7 @@ export function ExportsSection() {
                 <h4 className="mt-3 text-base font-semibold text-[var(--bs-text-primary)]">
                   {fmt.title}
                 </h4>
-                <p className="mt-1.5 text-xs leading-relaxed text-[var(--bs-text-muted)]">
+                <p className="bs-prose mt-1.5 text-xs leading-relaxed text-[var(--bs-text-muted)]">
                   {fmt.detail}
                 </p>
               </LiquidGlassCard>
@@ -171,11 +171,11 @@ export function ExportsSection() {
             <p className="text-sm font-semibold text-[var(--bs-text-primary)]">
               {d.models3d.distinctionTitle}
             </p>
-            <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
+            <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3 lg:gap-6">
               {d.models3d.sources.map((src) => (
                 <div
                   key={src.title}
-                  className="rounded-[var(--bs-radius-md)] border border-[var(--bs-border-subtle)] bg-[var(--bs-bg-page)] p-4"
+                  className="rounded-[var(--bs-radius-md)] border border-[var(--bs-border-subtle)] bg-[var(--bs-bg-page)] p-4 sm:p-5"
                 >
                   <span className="rounded-full bg-[var(--bs-badge-bg)] px-2.5 py-0.5 text-[10px] font-semibold text-[var(--bs-badge-text)] uppercase">
                     {src.badge}
@@ -183,7 +183,7 @@ export function ExportsSection() {
                   <h5 className="mt-2.5 text-sm font-semibold text-[var(--bs-text-primary)]">
                     {src.title}
                   </h5>
-                  <p className="mt-1 text-xs leading-relaxed text-[var(--bs-text-muted)]">
+                  <p className="bs-prose mt-1 text-xs leading-relaxed text-[var(--bs-text-muted)]">
                     {src.detail}
                   </p>
                 </div>
@@ -197,8 +197,8 @@ export function ExportsSection() {
 
         {/* 36. Design Studio Exports & Before/After Slider */}
         <ScrollReveal y={26}>
-          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10">
-            <div className="space-y-6 lg:col-span-5">
+          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+            <div className="space-y-6 lg:col-span-5 xl:col-span-4">
               <div>
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--bs-badge-bg)] px-3.5 py-1 text-xs font-semibold tracking-wider text-[var(--bs-badge-text)] uppercase ring-1 ring-[var(--bs-badge-border)]">
                   <Layers className="h-3.5 w-3.5" aria-hidden="true" />
@@ -207,12 +207,12 @@ export function ExportsSection() {
                 <h3 className="mt-4 text-3xl font-semibold tracking-tight text-[var(--bs-text-primary)] sm:text-4xl">
                   {d.studioExports.headline}
                 </h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-[var(--bs-text-muted)]">
+                <p className="bs-prose mt-3 text-[15px] leading-relaxed text-[var(--bs-text-muted)]">
                   {d.studioExports.subtitle}
                 </p>
               </div>
 
-              <ul className="space-y-2 text-sm text-[var(--bs-text-primary)]">
+              <ul className="bs-prose space-y-2 text-sm text-[var(--bs-text-primary)]">
                 {d.studioExports.formats.map((fmt) => (
                   <li key={fmt} className="flex items-start gap-2.5">
                     <Check
@@ -224,12 +224,12 @@ export function ExportsSection() {
                 ))}
               </ul>
 
-              <p className="rounded-[var(--bs-radius-md)] border border-[var(--bs-badge-border)] bg-[var(--bs-badge-bg)] px-4 py-3 text-xs leading-relaxed text-[var(--bs-badge-text)]">
+              <p className="bs-prose rounded-[var(--bs-radius-md)] border border-[var(--bs-badge-border)] bg-[var(--bs-badge-bg)] px-4 py-3 text-xs leading-relaxed text-[var(--bs-badge-text)]">
                 {d.studioExports.isolationNote}
               </p>
             </div>
 
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-7 xl:col-span-8">
               <BeforeAfterComparison
                 beforeScreenshotId="export-studio-before"
                 afterScreenshotId="export-studio-after"

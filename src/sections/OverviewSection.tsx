@@ -58,7 +58,7 @@ export function OverviewSection() {
       aria-labelledby="overview-heading"
       className="border-t border-[var(--bs-border-subtle)] bg-[var(--bs-surface)] py-20 sm:py-28"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="bs-container">
         <div id="overview-heading">
           <SectionHeading
             eyebrow={t.overview.eyebrow}
@@ -75,10 +75,10 @@ export function OverviewSection() {
         >
           <div
             data-overview-pin
-            className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10"
+            className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-14"
           >
             {/* Left workflow selector rail */}
-            <div className="space-y-2.5 lg:col-span-5">
+            <div className="space-y-2.5 lg:col-span-5 xl:col-span-4">
               {stages.map((stage, index) => {
                 const isActive = index === activeIndex;
                 return (
@@ -145,9 +145,14 @@ export function OverviewSection() {
             </div>
 
             {/* Right stage showcase */}
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-7 xl:col-span-8">
               <div ref={stagePanelRef} className="will-change-transform">
-                <LiquidGlassPanel variant="subtle" refraction rounded="xl" className="p-5 sm:p-8">
+                <LiquidGlassPanel
+                  variant="subtle"
+                  refraction
+                  rounded="xl"
+                  className="p-5 sm:p-8 xl:p-10"
+                >
                   <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
                     <div>
                       <span className="font-mono text-xs font-semibold text-[var(--bs-accent-text)]">
@@ -161,7 +166,7 @@ export function OverviewSection() {
 
                   {activeStage.deviceType === 'iphone' ? (
                     <div className="py-2">
-                      <IPhoneFrame className="max-w-[260px]">
+                      <IPhoneFrame className="max-w-[290px] xl:max-w-[330px]">
                         <ScreenshotPlaceholder screenshotId={activeStage.screenshotId} />
                       </IPhoneFrame>
                     </div>

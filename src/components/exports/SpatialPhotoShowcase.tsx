@@ -87,9 +87,9 @@ export function SpatialPhotoShowcase() {
 
   return (
     <div ref={stageWrapRef} className="space-y-8">
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-14">
         {/* Left: Copy + capabilities + clickable 3-stage transition steps */}
-        <div className="space-y-6 lg:col-span-5">
+        <div className="space-y-6 lg:col-span-5 xl:col-span-4">
           <div className="space-y-3">
             {sp.stages.map((st, idx) => {
               const active = idx === stageIndex;
@@ -156,8 +156,8 @@ export function SpatialPhotoShowcase() {
         </div>
 
         {/* Right: GSAP 3-stage photo transition: Marker -> Photo Card -> Export Archive */}
-        <div className="lg:col-span-7">
-          <LiquidGlassPanel variant="subtle" refraction rounded="xl" className="p-5 sm:p-7">
+        <div className="lg:col-span-7 xl:col-span-8">
+          <LiquidGlassPanel variant="subtle" refraction rounded="xl" className="p-5 sm:p-7 xl:p-9">
             <div className="space-y-4">
               {/* Stage 1: 3D Building Marker */}
               <div

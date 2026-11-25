@@ -1,5 +1,9 @@
 @import 'tailwindcss';
 
+@theme {
+  --breakpoint-3xl: 120rem;
+}
+
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @layer base {
@@ -54,6 +58,29 @@
 }
 
 @layer components {
+  /* ==========================================================================
+     Centralized Fluid Layout Containers (Token-driven across 320px-3840px)
+     ========================================================================== */
+
+  .bs-container {
+    width: 100%;
+    max-width: var(--bs-container-max);
+    margin-inline: auto;
+    padding-inline: max(var(--bs-container-px), env(safe-area-inset-left))
+      max(var(--bs-container-px), env(safe-area-inset-right));
+  }
+
+  .bs-nav-shell {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: max(var(--bs-nav-px), env(safe-area-inset-left))
+      max(var(--bs-nav-px), env(safe-area-inset-right));
+  }
+
+  .bs-prose {
+    max-width: var(--bs-prose-max);
+  }
+
   /* ==========================================================================
      Solid Architectural Surfaces (Balanced with Liquid Glass controls)
      ========================================================================== */

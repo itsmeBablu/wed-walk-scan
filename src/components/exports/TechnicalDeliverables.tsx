@@ -10,8 +10,8 @@ export function TechnicalDeliverables() {
   return (
     <ScrollReveal y={26} className="mt-16">
       <div className="surface-card rounded-[var(--bs-radius-xl)] p-6 sm:p-10">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-5">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+          <div className="lg:col-span-5 xl:col-span-4">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--bs-badge-bg)] px-3.5 py-1 text-xs font-semibold tracking-wider text-[var(--bs-badge-text)] uppercase ring-1 ring-[var(--bs-badge-border)]">
               <Cpu className="h-3.5 w-3.5" aria-hidden="true" />
               {tech.eyebrow}
@@ -21,7 +21,7 @@ export function TechnicalDeliverables() {
               {tech.headline}
             </h3>
 
-            <p className="mt-3 text-[15px] leading-relaxed text-[var(--bs-text-muted)]">
+            <p className="bs-prose mt-3 text-[15px] leading-relaxed text-[var(--bs-text-muted)]">
               {tech.subtitle}
             </p>
 
@@ -37,9 +37,9 @@ export function TechnicalDeliverables() {
             </div>
           </div>
 
-          <div className="space-y-6 lg:col-span-7">
+          <div className="space-y-6 lg:col-span-7 xl:col-span-8">
             {/* Evidence provenance chain */}
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 2xl:grid-cols-4">
               {tech.evidenceChain.map((item) => (
                 <div
                   key={item.step}
@@ -54,7 +54,7 @@ export function TechnicalDeliverables() {
             </div>
 
             {/* Technical Room Export Formats */}
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 2xl:grid-cols-4">
               {tech.outputs.map((out) => (
                 <LiquidGlassCard key={out.ext} variant="subtle" rounded="md" className="p-4">
                   <span className="rounded-full bg-[var(--bs-badge-bg)] px-2.5 py-0.5 font-mono text-[11px] font-bold text-[var(--bs-badge-text)]">

@@ -108,23 +108,25 @@ export function HeroSection() {
       const mm = gsap.matchMedia();
       mm.add('(min-width: 1024px) and (hover: hover)', () => {
         gsap.to('[data-hero-ipad]', {
-          y: -16,
+          y: () => -Math.max(16, Math.round(root.clientHeight * 0.025)),
           ease: 'none',
           scrollTrigger: {
             trigger: root,
             start: 'top top',
             end: 'bottom top',
             scrub: 0.5,
+            invalidateOnRefresh: true,
           },
         });
         gsap.to('[data-hero-iphone]', {
-          y: -30,
+          y: () => -Math.max(28, Math.round(root.clientHeight * 0.045)),
           ease: 'none',
           scrollTrigger: {
             trigger: root,
             start: 'top top',
             end: 'bottom top',
             scrub: 0.5,
+            invalidateOnRefresh: true,
           },
         });
       });
@@ -143,11 +145,11 @@ export function HeroSection() {
       {/* Ambient architectural optical aura */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 mx-auto h-[540px] max-w-6xl bg-[radial-gradient(62%_54%_at_50%_18%,rgba(250,204,21,0.2),transparent_72%)] dark:bg-[radial-gradient(62%_54%_at_50%_18%,rgba(250,204,21,0.16),transparent_72%)]"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 mx-auto h-[580px] max-w-[min(94vw,1760px)] bg-[radial-gradient(62%_54%_at_50%_18%,rgba(250,204,21,0.2),transparent_72%)] dark:bg-[radial-gradient(62%_54%_at_50%_18%,rgba(250,204,21,0.16),transparent_72%)]"
       />
 
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="mx-auto max-w-4xl text-center">
+      <div className="bs-container">
+        <div className="mx-auto max-w-5xl text-center 2xl:max-w-6xl">
           {/* 1. dWalkScan branding */}
           <div data-hero-brand className="flex flex-col items-center gap-3">
             <LiquidGlassPanel
@@ -169,7 +171,7 @@ export function HeroSection() {
           {/* 2. Staggered headline */}
           <h1
             id="hero-headline"
-            className="mt-7 flex flex-wrap items-baseline justify-center gap-x-4 gap-y-1 text-[42px] font-semibold tracking-[-0.036em] text-[var(--bs-text-primary)] sm:text-6xl lg:text-[78px] lg:leading-[1.02]"
+            className="mt-7 flex flex-wrap items-baseline justify-center gap-x-[clamp(0.75rem,1.4vw,1.75rem)] gap-y-1 text-[clamp(2.6rem,5.4vw,6.2rem)] leading-[1.01] font-semibold tracking-[-0.036em] text-[var(--bs-text-primary)]"
           >
             {t.hero.headlineLines.map((word) => (
               <span key={word} data-hero-line className="inline-block">
@@ -181,14 +183,14 @@ export function HeroSection() {
           {/* 3. Supporting headlines & description */}
           <p
             data-hero-copy
-            className="mt-4 text-xl font-medium tracking-tight text-[var(--bs-accent-text)] sm:text-2xl lg:text-[26px]"
+            className="mt-4 text-[clamp(1.18rem,1.8vw,1.85rem)] font-medium tracking-tight text-[var(--bs-accent-text)]"
           >
             {t.hero.leadStatement}
           </p>
 
           <p
             data-hero-copy
-            className="mx-auto mt-3.5 max-w-2xl text-base leading-relaxed text-pretty text-[var(--bs-text-muted)] sm:text-lg"
+            className="bs-prose mx-auto mt-3.5 text-base leading-relaxed text-pretty text-[var(--bs-text-muted)] sm:text-lg"
           >
             {t.hero.description}
           </p>
@@ -215,9 +217,9 @@ export function HeroSection() {
         </div>
 
         {/* 5, 6 & 7. Three-Device Apple Ecosystem Showcase: MacBook + iPad + iPhone */}
-        <div className="relative mx-auto mt-12 flex max-w-5xl flex-col gap-8 sm:mt-16 lg:block lg:pb-20">
+        <div className="relative mx-auto mt-12 flex w-full max-w-[min(100%,2200px)] flex-col gap-8 sm:mt-16 lg:mt-20 lg:block lg:pb-[clamp(4.5rem,7.5vw,10.5rem)]">
           {/* Background: MacBook displaying Design Studio */}
-          <div data-hero-mac className="relative mx-auto lg:max-w-[820px] xl:max-w-[860px]">
+          <div data-hero-mac className="relative mx-auto w-full lg:w-[min(78%,1560px)]">
             <AnimatedMacWindow
               manualControl
               title={t.hero.macLabel}
@@ -237,7 +239,7 @@ export function HeroSection() {
           {/* Middle Layer: iPad displaying Floor Plans */}
           <div
             data-hero-ipad
-            className="mx-auto w-full max-w-[440px] lg:absolute lg:bottom-0 lg:left-0 lg:z-10 lg:w-[370px] xl:w-[420px]"
+            className="mx-auto w-full max-w-[460px] lg:absolute lg:bottom-0 lg:left-0 lg:z-10 lg:w-[clamp(340px,31%,680px)] lg:max-w-none"
           >
             <AnimatedIPadFrame manualControl label={t.hero.ipadLabel}>
               <div className="relative overflow-hidden">
@@ -253,7 +255,7 @@ export function HeroSection() {
           {/* Foreground: iPhone displaying LiDAR Capture */}
           <div
             data-hero-iphone
-            className="mx-auto w-full max-w-[260px] lg:absolute lg:right-0 lg:-bottom-4 lg:z-20 lg:w-[215px] xl:w-[242px]"
+            className="mx-auto w-full max-w-[270px] lg:absolute lg:right-0 lg:-bottom-4 lg:z-20 lg:w-[clamp(210px,18%,390px)] lg:max-w-none"
           >
             <AnimatedIPhoneFrame manualControl label={t.hero.iphoneLabel}>
               <div className="relative overflow-hidden">
