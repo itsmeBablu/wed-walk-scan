@@ -270,6 +270,8 @@ export interface DownloadOption {
   title: string;
   subtitle: string;
   ctaLabel: string;
+  href?: string;
+  actionLabel?: string;
   releaseNotesTitle: string;
   releaseNotes: string[];
   requirements: string[];
@@ -381,6 +383,7 @@ export interface TranslationSchema {
     subtitle: string;
     specsTooltip: string;
     viewReleaseNotes: string;
+    sourceRepoLabel: string;
     modalNote: string;
     options: DownloadOption[];
   };
@@ -400,6 +403,9 @@ export interface TranslationSchema {
     privacy: string;
     terms: string;
     support: string;
+    sourceCode: string;
+    releases: string;
+    license: string;
   };
   screenshotFallback: {
     badge: string;

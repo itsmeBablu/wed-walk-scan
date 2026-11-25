@@ -203,10 +203,10 @@ export const deliverablesDe: DeliverablesContent = {
       },
     ],
     capabilities: [
-      'Einzelraum-Grundrisse & mehrgeschossige Gebäudepläne',
-      'Automatische Etagen-Trennung in DXF- und SVG-Archiven',
-      'Wände, Türen, Fenster, Öffnungen und Brüstungshöhen',
-      'Raumnamen, Maßketten, Netto-Raumflächen und Anmerkungen',
+      'DIN-Öffnungsbemaßung (Breite oben, Höhe unten, schräge Begrenzungsstriche /)',
+      'Fenster-Brüstungshöhen (BRH:) überschneidungsfrei an der Fensterinnenseite',
+      'Raumstempel im Polygon2D-Innenpunkt mit primärgelber #facc15-Umrandung',
+      'Wählbare Einheiten in mm, m oder Dual mit englischer Punktnotation (.) & Etagen-Trennung',
     ],
   },
   models3d: {

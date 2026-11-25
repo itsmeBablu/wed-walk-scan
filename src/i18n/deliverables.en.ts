@@ -203,10 +203,10 @@ export const deliverablesEn: DeliverablesContent = {
       },
     ],
     capabilities: [
-      'Individual room plans & merged multi-storey building layouts',
-      'Automatic per-floor archive separation for DXF and SVG',
-      'Walls, doors, windows, openings and parapet annotations',
-      'Room names, linear dimensions, net floor areas and notes',
+      'DIN opening dimension lines (width above, height below, diagonal oblique ticks /)',
+      'Clear window parapet / sill heights (BRH:) centered along interior sills',
+      'Room area badges at Polygon2D.interiorPoint with #facc15 yellow borders',
+      'Selectable mm, m or dual units with English dot-decimal (.) notation & per-floor separation',
     ],
   },
   models3d: {

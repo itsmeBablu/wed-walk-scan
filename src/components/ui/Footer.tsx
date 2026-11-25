@@ -2,6 +2,7 @@ import { BrandLogo } from '@/components/ui/BrandLogo';
 import { BrandWordmark } from '@/components/ui/BrandWordmark';
 import { GlassThemeToggle } from '@/components/ui/GlassThemeToggle';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
+import { BRAND_CONFIG } from '@/data/brand';
 import { NAVIGATION_ITEMS } from '@/data/navigation';
 import { useLanguage } from '@/hooks/useLanguage';
 
@@ -57,10 +58,34 @@ export function Footer() {
         <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-[var(--bs-border-subtle)] pt-6 text-xs text-[var(--bs-text-muted)] sm:flex-row sm:items-center">
           <p>{t.footer.copyright}</p>
           <div className="flex flex-wrap items-center gap-5">
+            <a
+              href={BRAND_CONFIG.appRepoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-[var(--bs-text-primary)]"
+            >
+              {t.footer.sourceCode}
+            </a>
+            <a
+              href={BRAND_CONFIG.releasesUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-[var(--bs-text-primary)]"
+            >
+              {t.footer.releases}
+            </a>
+            <a
+              href={BRAND_CONFIG.licenseUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-[var(--bs-text-primary)]"
+            >
+              {t.footer.license}
+            </a>
             <a href="#faq" className="transition-colors hover:text-[var(--bs-text-primary)]">
               {t.footer.support}
             </a>
-            <a href="#downloads" className="transition-colors hover:text-[var(--bs-text-primary)]">
+            <a href="#exports" className="transition-colors hover:text-[var(--bs-text-primary)]">
               {t.footer.privacy}
             </a>
             <a href="#downloads" className="transition-colors hover:text-[var(--bs-text-primary)]">

@@ -1,24 +1,32 @@
 # dWalkScan Product Website
 
-Product marketing and showcase website for **dWalkScan** — _Walk. Scan. Transform._ — a native Apple ecosystem application designed for **iPhone, iPad, and Mac** for LiDAR building scanning, digital floor plans, 3D Design Studio editing, renovation planning, technical room documentation, and BIM/CAD deliverables.
+Official product marketing and documentation website for **[dWalkScan (`itsmeBablu/bau-scan`)](https://github.com/itsmeBablu/bau-scan)** — _Walk. Scan. Transform._ — an open-source native Swift application for **iPhone, iPad, and Mac** covering LiDAR room and multi-storey building scanning, DIN-dimensioned 2D floor plans, Design Studio 3D editing, Technical Room (`Technik`) MEP documentation, renovation material takeoffs, and CAD/BIM-oriented deliverables.
 
-Repository: [github.com/itsmeBablu/wed-walk-scan](https://github.com/itsmeBablu/wed-walk-scan)
+- **Website Repository:** [github.com/itsmeBablu/wed-walk-scan](https://github.com/itsmeBablu/wed-walk-scan)
+- **Native Apple App Repository:** [github.com/itsmeBablu/bau-scan](https://github.com/itsmeBablu/bau-scan)
 
-## Highlights
+---
 
-- **Apple Liquid Glass Interface**: Translucent macOS Tahoe / iOS 26 inspired floating navigation with GSAP active/hover pill indicators, pointer-reactive highlights, and adaptive Light, Dark, and System themes.
-- **Three-Device Ecosystem Showcase**: Coordinated MacBook, iPad, and iPhone presentations powered by GSAP ScrollTrigger choreography and interactive platform controls.
-- **Exports, Survey Evidence & Deliverables**: Interactive explorers for 2D architectural drawings (`PDF`, `PNG`, `SVG`, `DXF`), 3D geometry and scan meshes (`USDZ`, `OBJ`, `STL`, `PLY`), BIM handoff (`IFC`), opening-aware `quantities.csv` takeoffs, spatial survey photography, and Technical Room MEP deliverables.
-- **Bilingual Support (EN / DE)**: Full English and German copy with synchronized language state persistence.
-- **Zero-404 Screenshot Pipeline**: Custom Vite build/dev plugin (`screenshotManifestPlugin`) that automatically substitutes dropped screenshots without console errors when slots use placeholders.
+## Native dWalkScan Capabilities Documented on This Site
 
-## Technology Stack
+- **Continuous LiDAR Capture & Multi-Storey Clustering (iPhone Pro & iPad Pro, iOS/iPadOS 18+):** Walk room-to-room or across storeys using Apple RoomPlan with automatic vertical floor clustering (`StoryDetector`), door/window/opening detection, radiator dimension surveying (`HouseRadiator`), and in-scan JPEG photography with local XYZ scan-frame camera poses (`camera.json`).
+- **Architectural 2D Floor Plans:** DIN-style opening dimensions (width above the line, height below, diagonal oblique ticks `/`), interior window parapet heights (`BRH:`), interior room area badges at `Polygon2D.interiorPoint` (`#facc15` accent borders), and selectable `mm`, `m`, or dual units with dot-decimal (`.`) notation.
+- **Technical Room (`Technik`) MEP Documentation:** Dedicated plant-room workflows for boilers, buffer/DHW tanks, pumps, manifolds, electrical panels, ducts, pipe runs, and radiators, with optional Gemini AI photo analysis (off by default) and `deviceValidationPending` / `accuracyMm` provenance.
+- **Mac Companion App & Design Studio (`macOS 15+`):** Shared Swift codebase featuring native macOS menus, drag-and-drop, printing (`⌘P`), Sparkle auto-updates (`appcast.xml`), 5 cm grid snapping, arrow-key micro-nudging, front-wall presentation cutaways, Office / Living / Kitchen & Bath furniture collections, and automatic `<= 32"` desktop monitor classification.
+- **Open Deliverables & Local-First Packages:** Self-contained `.roomscan`, `.housescan`, and `.technicalroom` bundles synced locally or via iCloud Drive (`dWalkScan` folder), exporting `PDF` (A4 landscape + multi-page reports), `PNG`, layered `SVG`, `DXF`, `USDZ`, `OBJ` (+ materials ZIP), `STL`, `PLY`, `IFC 4 / IFC2x3`, `quantities.csv`, `technical-room-v1.json`, and self-describing ZIP archives.
+- **EN / DE Localization & Brand System:** Full English and German localization paired with Primary Yellow (`#facc15`), Secondary Yellow (`#fef08a` / `#fef3c7`), Dark Charcoal (`#111110` / `#272000`), and iOS 26 / macOS Tahoe-inspired Liquid Glass controls.
+
+---
+
+## Website Technology Stack
 
 - **Vite 8** + **React 19** + **TypeScript 6** (`strict: true`)
-- **Tailwind CSS v4** + custom CSS design tokens
-- **GSAP + ScrollTrigger + `@gsap/react`**
-- **Lucide React**
+- **Tailwind CSS v4** + custom CSS design tokens (`src/styles/tokens.css`)
+- **GSAP + ScrollTrigger + `@gsap/react`** for pinned workflows, parallax, and active header navigation
+- **Lucide React** icons
 - **ESLint** + **Prettier**
+
+---
 
 ## Development Commands
 
@@ -32,23 +40,25 @@ npm run format        # Format source and config files with Prettier
 npm run format:check  # Verify Prettier formatting without modifying files
 ```
 
+---
+
 ## Project Structure
 
 ```text
 public/
 ├── icons/             # App icon & favicon SVGs
 ├── images/            # Open Graph cover SVG
-└── screenshots/       # Optional screenshot folders (iphone, ipad, mac, technical, floorplans)
+└── screenshots/       # Optional replacement screenshots (iphone, ipad, mac, technical, floorplans)
 src/
-├── animations/        # GSAP configuration, scroll reveal, and pinned showcases
+├── animations/        # GSAP configuration, scroll reveal & pinned showcases
 ├── components/
-│   ├── devices/       # MacWindow, IPadFrame, and IPhoneFrame components
+│   ├── devices/       # MacWindow, IPadFrame & IPhoneFrame components
 │   ├── exports/       # BIM workflow, format explorers, takeoffs, reports & photo previews
 │   ├── navigation/    # Floating Liquid Glass desktop & mobile navigation
 │   └── ui/            # Liquid Glass primitives, segmented controls, cards, buttons & footer
-├── data/              # Brand constants, navigation, export catalog & screenshot manifest
+├── data/              # Brand links/constants, navigation, export catalog & screenshot manifest
 ├── hooks/             # Theme/Language providers, scroll spy, pointer glow & media queries
-├── i18n/              # English and German translations (en, de, deliverables.en, deliverables.de)
+├── i18n/              # English & German copy (en, de, deliverables.en, deliverables.de)
 ├── layouts/           # Shared page layout shell
 ├── sections/          # Hero, Brand Story, Ecosystem, Overview, Studio, Technical Room, Exports, FAQ & Downloads
 ├── styles/            # Design tokens and Tailwind / Liquid Glass layer styles
@@ -56,25 +66,31 @@ src/
 └── utils/             # Asset URL resolver & classname helpers
 ```
 
+---
+
 ## Replacing Screenshots
 
-All screenshot slots are registered in `src/data/screenshots.ts`.
+All screenshot slots are registered in `src/data/screenshots.ts`:
 
-1. Add real `PNG`, `JPG`, `WebP`, `AVIF`, or `SVG` files into the corresponding folder under `public/screenshots/`:
+1. Place `PNG`, `JPG`, `WebP`, `AVIF`, or `SVG` captures showing the yellow `dWalkScan` interface under:
    - `public/screenshots/iphone/`
    - `public/screenshots/ipad/`
    - `public/screenshots/mac/`
    - `public/screenshots/technical/`
    - `public/screenshots/floorplans/`
-2. Match the relative file names configured in `src/data/screenshots.ts` (or update the `path` entries there).
-3. `screenshotManifestPlugin` in `vite.config.ts` exposes `virtual:dwalkscan-screenshots` so real assets appear automatically in development and production builds.
+2. Match the file names defined in `src/data/screenshots.ts` (or update the `path` entries there).
+3. `screenshotManifestPlugin` in `vite.config.ts` exposes `virtual:dwalkscan-screenshots` so real captures appear automatically with zero 404 console errors when slots use placeholders.
 
-## Branding, Localization & Tokens
+---
 
-- **Brand Configuration**: `src/data/brand.ts` (`dWalkScan` branding, `.dwalkscan` bundle extension, and storage keys)
-- **Localization**: Edit `src/i18n/en.ts`, `src/i18n/de.ts`, `src/i18n/deliverables.en.ts`, and `src/i18n/deliverables.de.ts` (type-checked via `src/types/index.ts`)
-- **Theme & Colors**: Customize Primary Yellow (`#facc15`), Secondary Yellow (`#fef08a` / `#fef3c7`), Dark Charcoal (`#111110` / `#272000`), and Liquid Glass tokens in `src/styles/tokens.css`
+## Customization, Distribution Links & Static Deployment
 
-## GitHub Pages & Static Deployment
+- **Repository & Release Links**: Configured centrally in `src/data/brand.ts` (`appRepoUrl`, `releasesUrl`, `iosWorkflowUrl`, `licenseUrl`, `websiteRepoUrl`) and consumed by `DownloadsSection.tsx` and `Footer.tsx`.
+- **Copy & Localization**: Edit `src/i18n/en.ts`, `src/i18n/de.ts`, `src/i18n/deliverables.en.ts`, and `src/i18n/deliverables.de.ts` (type-checked via `src/types/index.ts`).
+- **GitHub Pages / Static Hosting**: `vite.config.ts` defaults to `base: process.env.VITE_BASE_PATH ?? './'` and resolves public assets through `import.meta.env.BASE_URL` for root domains and repository subpaths (`https://itsmebablu.github.io/wed-walk-scan/`).
 
-`vite.config.ts` defaults to `base: process.env.VITE_BASE_PATH ?? './'` and resolves public assets through `import.meta.env.BASE_URL`, allowing the `dist/` build to be hosted at either a root domain or a GitHub Pages repository subpath (for example, `https://itsmebablu.github.io/wed-walk-scan/`).
+---
+
+## License
+
+dWalkScan native app source (`itsmeBablu/bau-scan`) is licensed under the [MIT License](https://github.com/itsmeBablu/bau-scan/blob/main/LICENSE).

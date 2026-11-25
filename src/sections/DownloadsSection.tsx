@@ -1,4 +1,4 @@
-import { Check, Download, Info, Laptop, Smartphone, Tablet } from 'lucide-react';
+import { Check, Download, ExternalLink, Info, Laptop, Smartphone, Tablet } from 'lucide-react';
 import { useState } from 'react';
 import { ScrollReveal } from '@/animations/ScrollReveal';
 import { Button } from '@/components/ui/Button';
@@ -7,6 +7,7 @@ import { GlassTooltip } from '@/components/ui/GlassTooltip';
 import { LiquidGlassButton } from '@/components/ui/LiquidGlassButton';
 import { LiquidGlassCard } from '@/components/ui/LiquidGlassCard';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { BRAND_CONFIG } from '@/data/brand';
 import { useLanguage } from '@/hooks/useLanguage';
 import type { DownloadOption } from '@/types';
 
@@ -95,10 +96,21 @@ export function DownloadsSection() {
                   </div>
 
                   <div className="flex flex-col items-stretch gap-2.5 border-t border-[var(--bs-border-subtle)] pt-5">
-                    <LiquidGlassButton onClick={() => setActiveModalOption(option)}>
-                      <Download className="h-4 w-4" aria-hidden="true" />
-                      {option.ctaLabel}
-                    </LiquidGlassButton>
+                    {option.id === 'mac' && option.href ? (
+                      <LiquidGlassButton
+                        href={option.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Download className="h-4 w-4" aria-hidden="true" />
+                        {option.ctaLabel}
+                      </LiquidGlassButton>
+                    ) : (
+                      <LiquidGlassButton onClick={() => setActiveModalOption(option)}>
+                        <Download className="h-4 w-4" aria-hidden="true" />
+                        {option.ctaLabel}
+                      </LiquidGlassButton>
+                    )}
 
                     <Button variant="ghost" size="sm" onClick={() => setActiveModalOption(option)}>
                       {t.downloads.viewReleaseNotes}
@@ -139,6 +151,29 @@ export function DownloadsSection() {
                   <li key={req}>• {req}</li>
                 ))}
               </ul>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              {activeModalOption.href && (
+                <LiquidGlassButton
+                  size="sm"
+                  href={activeModalOption.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                  {activeModalOption.actionLabel ?? activeModalOption.ctaLabel}
+                </LiquidGlassButton>
+              )}
+              <Button
+                variant="outline"
+                size="sm"
+                href={BRAND_CONFIG.appRepoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t.downloads.sourceRepoLabel}
+              </Button>
             </div>
 
             <p className="text-xs leading-relaxed text-[var(--bs-text-muted)]">
