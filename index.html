@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dWalkScan — Walk. Scan. Transform.</title>
+    <meta
+      name="description"
+      content="Discover dWalkScan, a native iPhone, iPad and Mac application for LiDAR building scanning, digital floor plans, 3D design, renovation planning and BIM-oriented building documentation."
+    />
+    <meta
+      name="keywords"
+      content="dWalkScan, LiDAR building scan, 3D floor plan, 5D BIM vision, architectural CAD, iPhone scanning, iPad Pro, macOS architecture app, renovation planning"
+    />
+    <meta name="author" content="dWalkScan" />
+    <meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="dWalkScan — Walk. Scan. Transform." />
+    <meta
+      property="og:description"
+      content="Designed for iPhone, iPad and Mac. Native LiDAR building scanning, digital floor plans, 3D design, renovation planning and BIM-oriented documentation."
+    />
+    <meta property="og:image" content="./images/og-cover.svg" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="de_DE" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="dWalkScan — Walk. Scan. Transform." />
+    <meta
+      name="twitter:description"
+      content="Designed for iPhone, iPad and Mac. Inspired by 5D BIM. Powered by LiDAR."
+    />
+    <meta name="twitter:image" content="./images/og-cover.svg" />
+
+    <link rel="icon" type="image/svg+xml" href="./icons/favicon.svg" />
+    <link rel="apple-touch-icon" href="./icons/dwalkscan-icon.svg" />
+
+    <!-- Prevent theme and language flash on initial paint -->
+    <script>
+      (function () {
+        try {
+          var storedTheme = localStorage.getItem('dwalkscan-theme');
+          var mode =
+            storedTheme === 'light' || storedTheme === 'dark' || storedTheme === 'system'
+              ? storedTheme
+              : 'system';
+          var prefersDark =
+            window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var resolved = mode === 'system' ? (prefersDark ? 'dark' : 'light') : mode;
+          var root = document.documentElement;
+          root.setAttribute('data-theme', resolved);
+          root.classList.toggle('dark', resolved === 'dark');
+
+          var storedLang = localStorage.getItem('dwalkscan-lang');
+          if (storedLang === 'de' || storedLang === 'en') {
+            root.setAttribute('lang', storedLang);
+          } else if (navigator.language && navigator.language.toLowerCase().startsWith('de')) {
+            root.setAttribute('lang', 'de');
+          }
+        } catch (e) {
+          /* ignore storage access issues */
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

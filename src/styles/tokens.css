@@ -1,0 +1,158 @@
+:root {
+  /* dWalkScan Brand Palette */
+  --bs-brand-yellow: #facc15;
+  --bs-yellow-secondary: #fef08a;
+  --bs-yellow-badge: #fef3c7;
+  --bs-charcoal: #111110;
+  --bs-charcoal-warm: #272000;
+
+  /* Core Accent Tokens (Light Mode) */
+  --bs-accent: #facc15;
+  --bs-accent-hover: #eab308;
+  --bs-accent-pressed: #ca8a04;
+  --bs-accent-ink: #111110;
+  --bs-accent-text: #855a00;
+
+  --bs-badge-bg: #fef3c7;
+  --bs-badge-bg-strong: #fef08a;
+  --bs-badge-text: #272000;
+  --bs-badge-border: rgba(250, 204, 21, 0.45);
+
+  --bs-bg-page: #f5f5f7;
+  --bs-surface: #ffffff;
+  --bs-surface-elevated: #ffffff;
+  --bs-surface-subtle: #efefe9;
+  --bs-surface-studio: #111110;
+
+  --bs-text-primary: #111110;
+  --bs-text-secondary: #86868b;
+  --bs-text-muted: #5c5b57;
+  --bs-text-inverse: #ffffff;
+
+  --bs-border-subtle: rgba(17, 17, 16, 0.08);
+  --bs-border-strong: rgba(17, 17, 16, 0.16);
+
+  /* Typography */
+  --bs-font-sans:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', system-ui,
+    'Segoe UI', Roboto, sans-serif;
+  --bs-font-mono: ui-monospace, 'SF Mono', Menlo, Monaco, Consolas, monospace;
+
+  /* Apple Liquid Glass Optical Tokens (Light) */
+  --glass-blur: 24px;
+  --glass-blur-nav: 28px;
+  --glass-saturate: 185%;
+  --glass-brightness: 1.05;
+
+  --glass-tint: rgba(255, 255, 255, 0.64);
+  --glass-tint-elevated: rgba(255, 255, 255, 0.8);
+  --glass-tint-subtle: rgba(255, 255, 255, 0.46);
+  --glass-tint-nav: rgba(250, 250, 248, 0.72);
+  --glass-tint-accent: rgba(250, 204, 21, 0.88);
+  --glass-fallback-bg: rgba(255, 255, 255, 0.92);
+
+  --glass-edge-highlight: rgba(255, 255, 255, 0.94);
+  --glass-edge-refraction: rgba(255, 255, 255, 0.45);
+  --glass-edge-shadow: rgba(17, 17, 16, 0.08);
+  --glass-outer-ring: rgba(17, 17, 16, 0.09);
+  --glass-glint-color: rgba(255, 255, 255, 0.76);
+  --glass-glint-opacity: 0.55;
+
+  --glass-shadow:
+    0 12px 36px -8px rgba(17, 17, 16, 0.1), 0 2px 10px -2px rgba(17, 17, 16, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  --glass-shadow-nav:
+    0 14px 40px -10px rgba(17, 17, 16, 0.14), 0 2px 8px rgba(17, 17, 16, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --glass-shadow-button:
+    0 10px 26px -6px rgba(202, 138, 4, 0.36), 0 1px 3px rgba(17, 17, 16, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82);
+
+  /* Blueprint & Placeholder Grid */
+  --bs-grid-line: rgba(180, 130, 0, 0.08);
+  --bs-grid-line-strong: rgba(180, 130, 0, 0.16);
+
+  /* Radii & Layout */
+  --bs-radius-sm: 12px;
+  --bs-radius-md: 18px;
+  --bs-radius-lg: 26px;
+  --bs-radius-xl: 34px;
+  --bs-radius-pill: 9999px;
+
+  --bs-nav-offset: 88px;
+}
+
+[data-theme='dark'] {
+  --bs-accent: #facc15;
+  --bs-accent-hover: #fde047;
+  --bs-accent-pressed: #eab308;
+  --bs-accent-ink: #111110;
+  --bs-accent-text: #facc15;
+
+  --bs-badge-bg: rgba(250, 204, 21, 0.14);
+  --bs-badge-bg-strong: rgba(254, 240, 138, 0.22);
+  --bs-badge-text: #fef08a;
+  --bs-badge-border: rgba(250, 204, 21, 0.32);
+
+  --bs-bg-page: #111110;
+  --bs-surface: #1b1a16;
+  --bs-surface-elevated: #272000;
+  --bs-surface-subtle: #181713;
+  --bs-surface-studio: #111110;
+
+  --bs-text-primary: #fafaf7;
+  --bs-text-secondary: #9b988e;
+  --bs-text-muted: #b5b2a6;
+  --bs-text-inverse: #111110;
+
+  --bs-border-subtle: rgba(254, 240, 138, 0.1);
+  --bs-border-strong: rgba(254, 240, 138, 0.2);
+
+  /* Apple Liquid Glass Optical Tokens (Dark Charcoal) */
+  --glass-saturate: 190%;
+  --glass-brightness: 1.08;
+
+  --glass-tint: rgba(24, 23, 18, 0.62);
+  --glass-tint-elevated: rgba(39, 32, 0, 0.68);
+  --glass-tint-subtle: rgba(20, 19, 14, 0.46);
+  --glass-tint-nav: rgba(17, 17, 16, 0.72);
+  --glass-tint-accent: rgba(250, 204, 21, 0.92);
+  --glass-fallback-bg: rgba(27, 26, 22, 0.94);
+
+  --glass-edge-highlight: rgba(254, 243, 199, 0.32);
+  --glass-edge-refraction: rgba(250, 204, 21, 0.28);
+  --glass-edge-shadow: rgba(255, 255, 255, 0.06);
+  --glass-outer-ring: rgba(254, 240, 138, 0.14);
+  --glass-glint-color: rgba(254, 240, 138, 0.24);
+  --glass-glint-opacity: 0.45;
+
+  --glass-shadow:
+    0 18px 44px -10px rgba(0, 0, 0, 0.65), 0 2px 12px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(254, 243, 199, 0.16);
+  --glass-shadow-nav:
+    0 20px 48px -12px rgba(0, 0, 0, 0.75), 0 2px 10px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(254, 243, 199, 0.18);
+  --glass-shadow-button:
+    0 12px 30px -6px rgba(250, 204, 21, 0.3), 0 2px 6px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+
+  --bs-grid-line: rgba(250, 204, 21, 0.08);
+  --bs-grid-line-strong: rgba(250, 204, 21, 0.18);
+}
+
+/* Reduce GPU blur overhead on small screens & coarse pointer devices */
+@media (max-width: 767px), (hover: none) {
+  :root,
+  [data-theme='dark'] {
+    --glass-blur: 14px;
+    --glass-blur-nav: 16px;
+    --glass-glint-opacity: 0.22;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root,
+  [data-theme='dark'] {
+    --glass-glint-opacity: 0;
+  }
+}

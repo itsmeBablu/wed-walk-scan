@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+  <defs>
+    <linearGradient id="dws-app-bg" x1="20" y1="12" x2="232" y2="244" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#272000" />
+      <stop offset="52%" stop-color="#19170D" />
+      <stop offset="100%" stop-color="#111110" />
+    </linearGradient>
+    <linearGradient id="dws-app-sheen" x1="40" y1="16" x2="180" y2="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FEF08A" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#FEF08A" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  <rect x="12" y="12" width="232" height="232" rx="54" fill="url(#dws-app-bg)" />
+  <rect x="12" y="12" width="232" height="128" rx="54" fill="url(#dws-app-sheen)" />
+  <rect x="13.5" y="13.5" width="229" height="229" rx="52.5" stroke="#FACC15" stroke-opacity="0.45" stroke-width="3" />
+  <path
+    d="M128 52L194 90V166L128 204L62 166V90L128 52Z"
+    stroke="#FACC15"
+    stroke-width="8"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M128 52V128M128 128L194 90M128 128L62 90M128 128V204"
+    stroke="#FEF08A"
+    stroke-opacity="0.84"
+    stroke-width="6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M48 128H208"
+    stroke="#FEF3C7"
+    stroke-width="5"
+    stroke-linecap="round"
+    stroke-dasharray="7 10"
+  />
+  <circle cx="128" cy="128" r="10" fill="#FACC15" />
+</svg>
